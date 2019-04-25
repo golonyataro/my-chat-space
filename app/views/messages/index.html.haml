@@ -1,19 +1,19 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %meta{:charset => "utf-8"}/
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{charset: "utf-8"}/
     %title messages
-    %link{:href => "style.css", :rel => "stylesheet"}/
-    %link{:href => "https://use.fontawesome.com/releases/v5.6.1/css/all.css", :rel => "stylesheet"}/
+    %link{href: "style.css", :rel => "stylesheet"}/
+    %link{href: "https://use.fontawesome.com/releases/v5.6.1/css/all.css", :rel => "stylesheet"}/
   %body
     %header.header グループを作成しました
     .sidebar
       .sidebar-top
         .sidebar-title test-user
-        %a{:href => ""}
+        %a{href: ""}
           %i.fas.fa-cog
-        %a{:href => ""}
+        %a{href: ""}
           %i.fas.fa-edit
       .sidebar-bottom
         .sidebar-lists
@@ -32,7 +32,7 @@
           %h2.group_name test-group
           %ul.member-lists
             %li.member-list Member : test-user
-        %a{:href => ""}
+        %a{href: ""}
           .edit_btn Edit
       .main-bottom
         .message
@@ -50,7 +50,7 @@
           %p.message-text さようなら
     %footer.footer
       %input.input-textarea{:placeholder => "type a message"}/
-      %label.image-icon{:for => "sample1"}
+      %label.image-icon{for: "sample1"}
         %i.far.fa-image.fa-lg
-        %input#sample1{:type => "file"}/
-      %input.input-submit{:type => "submit", :value => "Send"}/
+        %input#sample1{type: "file"}/
+      %input.input-submit{type: "submit", :value => "Send"}/
