@@ -4,12 +4,11 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{charset: "utf-8"}/
     %title messages
-    %link{href: "style.css", :rel => "stylesheet"}/
+    %link{:rel => "stylesheet"}/
     %link{href: "https://use.fontawesome.com/releases/v5.6.1/css/all.css", :rel => "stylesheet"}/
   %body
     = render partial: "sidebar"
 
-    -# = render partial: 'message'
     .main
       .main-top
         %h2.group_name 
@@ -24,39 +23,10 @@
         = render partial: 'message', collection: @messages
         = render @messages
 
-    -# .main
-    -#   .main-top
-    -#     .current-group
-    -#       %h2.group_name test-group
-    -#       %ul.member-lists
-    -#         %li.member-list Member : test-user
-    -#     %a{href: ""}
-    -#       .edit_btn Edit
-    -#   .main-bottom
-    -#     .message
-    -#       .upper-info
-    -#         %p.upper-info-user
-    -#           test-user
-    -#         %p.upper-info-date
-    -#           2019/4/24(Wed)15:56:00
-    -#       %p.message-text こんにちは！
-    -#       .upper-info
-    -#         %p.upper-info-user
-    -#           test-user
-    -#         %p.upper-info-date
-    -#           2019/4/24(Wed)15:56:00
-    -#       %p.message-text さようなら
-
     %footer.footer
-      -# %input.input-textarea{:placeholder => "type a message"}/
-      -# %label.image-icon{for: "sample1"}
-      -#   %i.far.fa-image.fa-lg
-      -#   %input#sample1{type: "file"}/
-      -# %input.input-submit{type: "submit", :value => "Send"}/
-
       = form_for [@group, @message] do |f|
         = f.text_field :content, class: 'input-textarea', placeholder: 'type a message'
         = f.label :image, class: 'image-icon', for: "sample1" do
           %i.far.fa-image.fa-lg
-          %input#sample1{type: "file"}/
+          = f.file_field :image, class: 'hidden', id: "sample1"
         = f.submit 'Send', class: 'input-submit'
