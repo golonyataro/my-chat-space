@@ -6,22 +6,12 @@ html, body {
   padding: 0;
 }
 
-header{
-  position: fixed;
-  color: $white;
-  background-color: $lightBlue;
-  text-align: center;
-  width: 100%;
-  height: 25px;
-}
-
 .sidebar{
   position: fixed;
   background-color: $deepBlue;
-  top: 25px;
-  height: calc(100% - 25px);
+  height: 100%;
   width: 300px;
-  float: left;
+  // float: left;
 
   &-top{
     background-color: $black;
@@ -36,7 +26,7 @@ header{
   }
 
 
-  &-title{
+  &-name{
     font-size: 16px;
     font-weight: bold;
     color: $white;
@@ -44,25 +34,24 @@ header{
     float: left;
   }
   
-  &-bottom{
+  .groups{
     background-color: $deepBlue;
-    height: calc(100% - 125px);
-    top: 125px;
+    height: calc(100% - 100px);
     padding: 0 20px 0 20px;
   }
 
-  &-list{
+  .group{
     color: $white;
     font-weight: bold;
     margin-top: 20px;
     margin-bottom: 40px;
   
 
-    &-header{
+    &-name{
       font-size:15px;
     }
 
-    &-text{
+    &-message{
       font-size: 11px;
     }
   }
@@ -70,9 +59,9 @@ header{
 
 .main{
   position: fixed;
-  top: 25px;
+  top: 0;
   left: 300px;
-  height: calc(100% - 115px);
+  height: calc(100% - 90px);
   width: calc(100% - 300px);
 
   &-top{
@@ -97,24 +86,23 @@ header{
     position: fixed;
     color: $lightBlue;
     right: 40px;
-    top: 53px;
+    top: 28px;
     border: 1px solid $lightBlue;
     padding: 10px 20px;
   }
 
   &-bottom{
-    position: fixed;
     background-color: $lightGray;
-    top: 125px;
+    top: 100px;
     bottom: 90px;
-    height: calc(100% - 215px);
-    width: 100%;
+    height: calc(100% - 190px);
+    width: calc(100% -300px);
     padding: 46px 40px;
   }
 
   .message{
     width: 500px;
-    height: 400px;
+    height: 100px;
 
     &-text{
       margin-bottom: 40px;
@@ -146,7 +134,7 @@ header{
 
 footer{
   position: fixed;
-  display: flex;
+  // display: flex;
   background-color: $anotherGray;
   bottom: 0;
   left: 300px;
