@@ -7,50 +7,56 @@
     %link{href: "style.css", :rel => "stylesheet"}/
     %link{href: "https://use.fontawesome.com/releases/v5.6.1/css/all.css", :rel => "stylesheet"}/
   %body
-    %header.header グループを作成しました
-    .sidebar
-      .sidebar-top
-        .sidebar-title test-user
-        %a{href: ""}
-          %i.fas.fa-cog
-        %a{href: ""}
-          %i.fas.fa-edit
-      .sidebar-bottom
-        .sidebar-lists
-          .sidebar-list
-            %p.sidebar-list-header test-user
-            %p.sidebar-list-text さようなら
-          .sidebar-list
-            %p.sidebar-list-header sample-group
-            %p.sidebar-list-text hello!
-          .sidebar-list
-            %p.sidebar-list-header example
-            %p.sidebar-list-text まだメッセージがありません
+    = render partial: "sidebar"
+
+    -# = render partial: 'message'
     .main
       .main-top
-        .current-group
-          %h2.group_name test-group
-          %ul.member-lists
-            %li.member-list Member : test-user
+        %h2.group_name 
+          = @group.name
+        %ul.member-lists
+          %li.member-list 
+            - @group.users.each do |user|
+              = user.name
         %a{href: ""}
           .edit_btn Edit
       .main-bottom
-        .message
-          .upper-info
-            %p.upper-info-user
-              test-user
-            %p.upper-info-date
-              2019/4/24(Wed)15:56:00
-          %p.message-text こんにちは！
-          .upper-info
-            %p.upper-info-user
-              test-user
-            %p.upper-info-date
-              2019/4/24(Wed)15:56:00
-          %p.message-text さようなら
+        = render partial: 'message', collection: @messages
+        = render @messages
+
+    -# .main
+    -#   .main-top
+    -#     .current-group
+    -#       %h2.group_name test-group
+    -#       %ul.member-lists
+    -#         %li.member-list Member : test-user
+    -#     %a{href: ""}
+    -#       .edit_btn Edit
+    -#   .main-bottom
+    -#     .message
+    -#       .upper-info
+    -#         %p.upper-info-user
+    -#           test-user
+    -#         %p.upper-info-date
+    -#           2019/4/24(Wed)15:56:00
+    -#       %p.message-text こんにちは！
+    -#       .upper-info
+    -#         %p.upper-info-user
+    -#           test-user
+    -#         %p.upper-info-date
+    -#           2019/4/24(Wed)15:56:00
+    -#       %p.message-text さようなら
+
     %footer.footer
-      %input.input-textarea{:placeholder => "type a message"}/
-      %label.image-icon{for: "sample1"}
-        %i.far.fa-image.fa-lg
-        %input#sample1{type: "file"}/
-      %input.input-submit{type: "submit", :value => "Send"}/
+      -# %input.input-textarea{:placeholder => "type a message"}/
+      -# %label.image-icon{for: "sample1"}
+      -#   %i.far.fa-image.fa-lg
+      -#   %input#sample1{type: "file"}/
+      -# %input.input-submit{type: "submit", :value => "Send"}/
+
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'input-textarea', placeholder: 'type a message'
+        = f.label :image, class: 'image-icon', for: "sample1" do
+          %i.far.fa-image.fa-lg
+          %input#sample1{type: "file"}/
+        = f.submit 'Send', class: 'input-submit'

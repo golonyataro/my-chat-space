@@ -1,0 +1,54 @@
+@import "./variable";
+
+.sidebar{
+  position: fixed;
+  background-color: $deepBlue;
+  height: 100%;
+  width: 300px;
+  // float: left;
+
+  &-top{
+    background-color: $black;
+    height: 100px;
+    padding: 0 20px;
+
+    i{
+      float: right;
+      color: $white;
+      margin: 44px 0 44px 8px;
+    }
+  }
+
+
+  &-name{
+    font-size: 16px;
+    font-weight: bold;
+    color: $white;
+    padding: 38px 0;
+    float: left;
+  }
+  
+  .groups{
+    background-color: $deepBlue;
+    height: calc(100% - 100px);
+    padding: 0 20px 0 20px;
+  }
+
+  .group{
+    color: $white;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  
+
+    &-name{
+      color: $white;
+      font-size:15px;
+    }
+
+    &-message{
+      color: $white;
+      font-size: 11px;
+    }
+  }
+}
