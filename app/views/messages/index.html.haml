@@ -21,10 +21,9 @@
           .edit_btn Edit
       .main-bottom
         = render partial: 'message', collection: @messages
-        = render @messages
 
     %footer.footer
-      = form_for [@group, @message] do |f|
+      = form_for [@group, @message], id: "new_message" do |f|
         = f.text_field :content, class: 'input-textarea', placeholder: 'type a message'
         = f.label :image, class: 'image-icon', for: "sample1" do
           %i.far.fa-image.fa-lg
