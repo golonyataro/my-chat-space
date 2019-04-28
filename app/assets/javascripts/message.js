@@ -2,7 +2,7 @@ $(function(){
   function buildHTML(message){
     var html = `<p>
                   <strong>
-                    <a href=/groups/${message.user_id}/messages</a>
+                    <a href=/groups/${message.group_id}/messages</a>
                     ：
                   </strong>
                   ${message.content}
