@@ -2,10 +2,11 @@ $(function(){
   function buildHTML(message){
     var html = `<p>
                   <strong>
-                    <a href=/users/${message.user_id}>${comment.group_id}</a>
+                    <a href=/groups/${message.user_id}/messages</a>
                     ：
                   </strong>
                   ${message.content}
+                  ${message.image}
                 </p>`
     return html;
   }
@@ -25,9 +26,11 @@ $(function(){
       var html = buildHTML(data);
       $('.message').append(html)
       $('.input-textarea').val('')
+      $('.hidden')
+      $("form")[0].reset()
     })
     .fail(function(){
       alert('error');
     })
   })
-});
+}); 
