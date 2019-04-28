@@ -1,5 +1,5 @@
 $(function(){
-  function buildHTML(message){
+  function messagebuildHTML(message){
     var html = `<p>
                   <strong>
                     <a href=/groups/${message.group_id}/messages</a>
@@ -22,8 +22,8 @@ $(function(){
       processData: false,
       contentType: false
     });
-    .done(function(data){
-      var html = buildHTML(data);
+    .done(function(message){
+      var html = messagebuildHTML(message);
       $('.message').append(html);
       $('.input-textarea').val('');
       $('#new_message')[0].reset()
