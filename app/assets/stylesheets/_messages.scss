@@ -63,6 +63,7 @@ html, body {
   left: 300px;
   height: calc(100% - 90px);
   width: calc(100% - 300px);
+  overflow: scroll;
 
   &-top{
     height: 100px;
@@ -130,6 +131,11 @@ html, body {
       float: left;
     }
   }
+}
+
+img{
+  height: 100px;
+  width: 100px;
 }
 
 footer{
