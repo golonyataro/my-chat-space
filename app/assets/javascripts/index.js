@@ -42,14 +42,14 @@ $(function() {
       })
 
 
-  .done(function(users) {
-    $("#user_search_result").empty();
-      if (users.length !== 0) {
-        users.forEach(function(user){
-          appendUsers(user);
+    .done(function(users) {
+      $("#user_search_result").empty();
+        if (users.length !== 0) {
+          users.forEach(function(user){
+            appendUsers(user);
+          })
+        }
         })
-      }
-      })
     .fail(function() {
       alert('ユーザー検索に失敗しました');
     });
