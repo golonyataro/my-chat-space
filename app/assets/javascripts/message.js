@@ -27,7 +27,6 @@ $(function(){
     .done(function(message) {
       var html = messagebuildHTML(message);
       $('.message').append(html)
-      $('.input-textarea').val('')
       $('#new_message')[0].reset();
     })
     .fail(function(){
