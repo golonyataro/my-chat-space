@@ -10,6 +10,7 @@ $(function(){
                 </p>`
     return html;
   };
+  
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -22,13 +23,12 @@ $(function(){
       processData: false,
       contentType: false
     });
-    .done(function(message){
+
+    .done(function(message) {
       var html = messagebuildHTML(message);
-      $('.message').append(html);
-      $('.input-textarea').val('');
-      $('#new_message')[0].reset()
-      // $("#new_message").prop("disabled", false);
-    });
+      $('.message').append(html)
+      $('#new_message')[0].reset();
+    })
     .fail(function(){
       alert('error');
     });
