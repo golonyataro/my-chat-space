@@ -48,11 +48,11 @@ $(function() {
         users.forEach(function(user){
           appendUsers(user);
         })
-       }
+      }
       })
-      .fail(function() {
-        alert('ユーザー検索に失敗しました');
-      });
+    .fail(function() {
+      alert('ユーザー検索に失敗しました');
+    });
     });
   });
 
