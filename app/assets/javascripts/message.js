@@ -28,7 +28,6 @@ $(function(){
       var html = messagebuildHTML(message);
       $('.message').append(html)
       $('.input-textarea').val('')
-      // $('.message').animate({scrollTop: $(".message")[0].scrollHeight}, 1500)
       $('#new_message')[0].reset();
     })
     .fail(function(){
