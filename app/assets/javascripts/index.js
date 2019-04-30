@@ -17,7 +17,7 @@ $(function() {
     };
 
   function appendMembers(user_name, user_id) {
-    var html = `<div class='chat-group-user clearfix>
+    var html = `<div class='chat-group-user clearfix'>
                   <input name='group[user_ids][]' type='hidden' value="${user_id}" multiple >
                     <p class='chat-group-user__name'>
                       ${user_name}
@@ -25,8 +25,7 @@ $(function() {
                     <a class='user_search_remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>
                       削除
                     </a>
-                </div>`
-                
+                </div>`           
 
       member_list.append(html);
   }
