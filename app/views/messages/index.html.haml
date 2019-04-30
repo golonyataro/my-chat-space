@@ -17,8 +17,8 @@
           %li.member-list 
             - @group.users.each do |user|
               = user.name
-        %a{href: ""}
-          .edit_btn Edit
+        .edit_btn
+          = link_to "Edit", edit_group_path(@group) 
       .main-bottom
         = render partial: 'message', collection: @messages
 
