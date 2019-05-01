@@ -20,7 +20,8 @@
         .edit_btn
           = link_to "Edit", edit_group_path(@group) 
       .main-bottom
-        = render partial: 'message', collection: @messages
+        .messages
+          = render partial: 'message', collection: @messages
 
     %footer.footer
       = form_for [@group, @message], id: "new_message" do |f|
