@@ -18,6 +18,7 @@ $(function(){
         <p class='message-text'>
           ${message.content}
         </p>
+        ${insertImage}
       </div>
     </div> `
     return html;
