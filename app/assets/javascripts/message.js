@@ -50,7 +50,6 @@ $(function(){
   //自動更新
   var reloadMessages = function() {
     var last_message_id = $('.message:last').data('id');
-    console.log(last_message_id);
     $.ajax({
       url: location.href.json,
       type: 'get',
@@ -58,11 +57,8 @@ $(function(){
       data: {last_message_id: last_message_id}
     })
     .done(function(messages) {
-      console.log(last_message_id);
-      console.log(messages);
       var insertHTML = '';
       messages.forEach(function(message) {
-        console.log("if文");
         if (message.id > last_message_id ) {
           insertHTML += messagebuildHTML(message);
         }
