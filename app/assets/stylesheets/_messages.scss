@@ -7,11 +7,10 @@ html, body {
 }
 
 .sidebar{
-  position: fixed;
   background-color: $deepBlue;
   height: 100%;
   width: 300px;
-  // float: left;
+  float: left;
 
   &-top{
     background-color: $black;
@@ -38,6 +37,7 @@ html, body {
     background-color: $deepBlue;
     height: calc(100% - 100px);
     padding: 0 20px 0 20px;
+    overflow: scroll;
   }
 
   .group{
@@ -58,85 +58,96 @@ html, body {
 }
 
 .main{
-  position: fixed;
-  top: 0;
-  left: 300px;
   height: calc(100% - 90px);
   width: calc(100% - 300px);
-  overflow: scroll;
+  float: right;
 
   &-top{
+    display: flex;
     height: 100px;
-    width: 60%;
+    width: calc(100%-300px);
     padding :0 40px;
   }
 
-  .group_name{
-    font-size: 20px;
-    color: $anotherBlack;
-    padding-top: 35px;
-    padding-bottom: 15px;
-  }
+    &-name{
+      float: left;
+    }
 
-  .member-list{
-    font-size: 12px;
-    color: $gray;
-  }
+      h2{
+        font-size: 20px;
+        color: $anotherBlack;
+        padding-top: 30px;
+        padding-bottom: 10px;
+      }
 
-  .edit_btn{
-    position: fixed;
-    color: $lightBlue;
-    right: 40px;
-    top: 28px;
-    border: 1px solid $lightBlue;
-    padding: 10px 20px;
+      p{
+        float: left;
+        font-size: 12px;
+        color: $gray;
+      }
+
+    .edit_btn{
+      position: fixed;
+      top: 0;
+      right: 20px;
+      float: right;
+      margin: 28px 0;
+      color: $lightBlue;
+      border: 1px solid $lightBlue;
+      padding: 10px 20px;
+
+      &_inside {
+        text-decoration: none;
+        color: $lightBlue;
+      }
   }
 
   &-bottom{
     background-color: $lightGray;
-    top: 100px;
-    bottom: 90px;
     height: calc(100% - 190px);
     width: calc(100% -300px);
     padding: 46px 40px;
+    overflow: scroll;
   }
 
   .message{
-    width: 500px;
-    height: 100px;
+  }
 
-    &-text{
+    .upper-info{
+      width: 300px;
+      height: 24px;
+      margin-bottom: 10px;
+    
+
+      &-user{
+        font-size: 16px;
+        font-weight: bold;
+        color: $darkGray;
+        float: left;
+      }
+
+      &-date{
+        font-size: 12px;
+        color: $gray;
+        padding: 3px 0;
+        margin-left: 10px;
+        float: left;
+      }
+    }
+    .lower-info{
+      display: block;
       margin-bottom: 40px;
     }
-  }
+      p{
 
-  .upper-info{
-    width: 300px;
-    height: 24px;
-    margin-bottom: 10px;
-  
+      }
 
-    &-user{
-      font-size: 16px;
-      font-weight: bold;
-      color: $darkGray;
-      float: left;
-    }
-
-    &-date{
-      font-size: 12px;
-      color: $gray;
-      padding: 3px 0;
-      margin-left: 10px;
-      float: left;
-    }
-  }
+      .image{
+        height: 100px;
+        width: 100px;
+      }
 }
 
-img{
-  height: 100px;
-  width: 100px;
-}
 
 footer{
   position: fixed;

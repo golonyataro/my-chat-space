@@ -20,10 +20,10 @@ $(function(){
     </div> `
     return html;
   };
-  
+
   //非同期通信
-  $('#new_message').on('submit', function(e){
-    e.preventDefault();
+  $('#new_message').on('submit',function(e) {
+    e.preventDefault(); 
     var formData = new FormData(this);
     var url = $(this).attr('action');
     $.ajax({
@@ -36,8 +36,10 @@ $(function(){
     })
     .done(function(message) {
       var html = messagebuildHTML(message);
-      $('.message').append(html)
+      $('.messages').append(html);
+      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
       $('#new_message')[0].reset();
+      $('.input-submit').prop('disabled', false);
     })
     .fail(function(){
       alert('error');
@@ -61,10 +63,11 @@ $(function(){
         }
       });
       $('.messages').append(insertHTML);
+      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
     })
-    .fail(function() {
-      alert('自動更新に失敗しました');
-    });
+    // .fail(function() {
+    //   alert('自動更新に失敗しました');
+    // });
   };
   setInterval(reloadMessages, 5000);
 }); 

@@ -11,14 +11,15 @@
 
     .main
       .main-top
-        %h2.group_name 
-          = @group.name
-        %ul.member-lists
-          %li.member-list 
+        .main-top-name
+          %h2
+            = @group.name
+          %p
             - @group.users.each do |user|
-              = user.name
+              %span
+                = user.name
         .edit_btn
-          = link_to "Edit", edit_group_path(@group) 
+          = link_to "Edit", edit_group_path(@group), class: 'edit_btn_inside'
       .main-bottom
         .messages
           = render partial: 'message', collection: @messages
