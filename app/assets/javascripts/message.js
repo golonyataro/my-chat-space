@@ -35,11 +35,16 @@ $(function(){
       contentType: false
     })
     .done(function(message) {
-      var html = messagebuildHTML(message);
-      $('.messages').append(html);
-      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
-      $('#new_message')[0].reset();
-      $('.input-submit').prop('disabled', false);
+      if (message != ""){
+        var html = messagebuildHTML(message);
+        $('.messages').append(html);
+        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
+        $('#new_message')[0].reset();
+        $('.input-submit').prop('disabled', false);
+      } else {
+        alert('メッセージが空ですよ！');
+        $('.input-submit').prop('disabled', false);
+      }
     })
     .fail(function(){
       alert('error');
