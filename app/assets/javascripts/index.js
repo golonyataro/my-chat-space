@@ -40,11 +40,7 @@ $(function() {
   };
 
   $(function() {
-    // $(".chat-group-form__input").on("keyup", function() {
-    //   console.log("グループ名に入力");
-    // })
     $("#user-search-field").on("keyup", function() {
-      console.log("追加したいメンバー入力");
       var input = $("#user-search-field").val();
       $.ajax({
         type: 'GET',
@@ -71,7 +67,9 @@ $(function() {
   $(function() {
     $("#user-search-field").on("keyup", function() {
       var array = []
-      user_data = $(".chat-group-user.clearfix").text()
+      var user_data = $(".chat-group-user.clearfix").text()
+      // var user_data = document.querySelectorAll('.chat-group-user.clearfix');
+      // user_data = [...user_data];
       console.log(user_data);
       array.push(user_data);
       console.log(array);
