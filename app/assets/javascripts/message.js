@@ -1,6 +1,9 @@
 $(function(){
   function messagebuildHTML(message){
-    var insertImage = message.id ? insertImage = `<img class="image, src="${message.image}">`: '';
+    var insertImage = "";
+    if (message.image.url){
+      insertImage = `<img class="image", src="${message.image.url}">`;
+    }
     var html = `
     <div class='message' data-id="${message.id}">
       <div class='upper-info'>
@@ -38,7 +41,7 @@ $(function(){
       if (message != ""){
         var html = messagebuildHTML(message);
         $('.messages').append(html);
-        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
+        $('.main-bottom').animate({scrollTop: $('.main-bottom')[0].scrollHeight});
         $('#new_message')[0].reset();
         $('.input-submit').prop('disabled', false);
       } else {
@@ -68,11 +71,11 @@ $(function(){
         }
       });
       $('.messages').append(insertHTML);
-      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+      $('.main-bottom').animate({scrollTop: $('.main-bottom')[0].scrollHeight}, 'fast');
     })
     // .fail(function() {
     //   alert('自動更新に失敗しました');
     // });
   };
-  setInterval(reloadMessages, 5000);
+  // setInterval(reloadMessages, 5000);
 }); 

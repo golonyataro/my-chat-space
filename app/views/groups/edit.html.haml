@@ -26,11 +26,15 @@
         %label.chat-group-form__label チャットメンバー
       .chat-group-form__field--right
         .chat-group-users
+          .chat_group_user_current.chat-group-user.clearfix
+            = f.hidden_field :user_ids, value: current_user.id, multiple: true
+            = current_user.name
           - @group.users.each do |user|
-            .chat_group_user_current.chat-group-user.clearfix
-              = user.name 
-              %a.user_search_remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn削除
-              = f.hidden_field :user_ids, value: current_user.id, multiple: true
+            - if user.id != current_user.id
+              .chat_group_user_current.chat-group-user.clearfix
+                = user.name 
+                %a.user_search_remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn削除
+                = f.hidden_field :user_ids, value: current_user.id, multiple: true
           #member_search_result
 
     .chat-group-form__field.clearfix
