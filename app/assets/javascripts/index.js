@@ -104,7 +104,7 @@ $(function() {
       var user_id = $(this).attr("data-user-id");
       $(this).parent().remove();
       member_name_lists.push(user_name)
-      console.log(member_name_lists);
+      // console.log(member_name_lists);
       appendMembers(user_name, user_id);
     });
     $(document).on("click", '.user_search_remove', function() {
