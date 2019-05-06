@@ -1,7 +1,7 @@
 $(function() {
   var user_list = $("#user_search_result");
   var member_list = $("#member_search_result");
-  var member_name_lists = [];
+  var member_name_lists = ["kimura","massi","pikemon"];
 
   function appendUsers(user) {
     
@@ -63,8 +63,9 @@ $(function() {
     });
   });
 
-  //選択しているグループのユーザーの名前を配列にぶち込んでいきたい
+  // 選択しているグループのユーザーの名前を配列にぶち込んでいきたい
   $(function() {
+    // ページを読み込んだ時に処理が行われるようにしたい
     $("#user-search-field").on("keyup", function() {
       var array = []
       var user_data = $(".chat-group-user.clearfix").text()

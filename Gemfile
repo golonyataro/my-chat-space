@@ -73,6 +73,7 @@ gem 'erb2haml'
 gem 'devise'
 
 gem 'carrierwave'
+gem 'fog-aws'
 gem 'mini_magick'
 
 gem 'rails-ujs', git: 'https://github.com/rails/rails-ujs.git' 
