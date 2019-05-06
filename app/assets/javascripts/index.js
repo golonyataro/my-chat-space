@@ -1,7 +1,7 @@
 $(function() {
   var user_list = $("#user_search_result");
   var member_list = $("#member_search_result");
-  var member_name_lists = ["kimura","massi","pikemon"];
+  var member_name_lists = [];
 
   function appendUsers(user) {
     
@@ -39,6 +39,18 @@ $(function() {
       member_list.append(html);
   };
 
+  function appendMatch() {
+    
+    var html = '';
+    html = `<div class="chat-group-user clearfix">
+              <p class="chat-group-user__name">
+                一致するユーザーがいません
+              </p>
+            </div>`
+
+      user_list.append(html);
+  };
+
   $(function() {
     $("#user-search-field").on("keyup", function() {
       var input = $("#user-search-field").val();
@@ -51,10 +63,12 @@ $(function() {
 
       .done(function(users) {
         $("#user_search_result").empty();
-          if (users.length !== 0) {
+          if (users.length !== 0 && users !== null) {
             users.forEach(function(user){
               appendUsers(user);
             })
+          } else {
+            appendMatch();
           }
       })
       .fail(function() {
@@ -69,14 +83,16 @@ $(function() {
     $("#user-search-field").on("keyup", function() {
       var array = []
       var user_data = $(".chat-group-user.clearfix").text()
+
       // var user_data = document.querySelectorAll('.chat-group-user.clearfix');
       // user_data = [...user_data];
-      console.log(user_data);
+
+      // console.log(user_data);
       array.push(user_data);
-      console.log(array);
+      // console.log(array);
       array.forEach(function(user_name){
         member_name_lists.push(user_name)
-        console.log(member_name_lists);
+        // console.log(member_name_lists);
       })
     })
   })
