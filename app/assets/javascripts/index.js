@@ -22,7 +22,7 @@ $(function() {
       }
     })
 
-      user_list.append(html);
+    user_list.append(html);
   };
 
   function appendMembers(user_name, user_id) {
@@ -36,7 +36,7 @@ $(function() {
                     </a>
                 </div>`           
 
-      member_list.append(html);
+    member_list.append(html);
   };
 
   function appendMatch() {
@@ -48,9 +48,31 @@ $(function() {
               </p>
             </div>`
 
-      user_list.append(html);
+    user_list.append(html);
   };
 
+  // グループ編集ページ、既存のグループメンバーを配列に追加
+  $(function(){
+    $("#user-search-field").one("keyup", function(){
+      var url = $(this).attr('action');
+      $.ajax({
+        url: url,
+        type: "GET",
+        dataType: 'json',
+        processData: false,
+        contentType: false
+      })
+
+      .done(function(users) {
+        users.forEach(function(user){
+          member_name_lists.push(user.name)
+        })
+      })
+      console.log(member_name_lists)
+    })
+  })
+
+  //インクリメンタルサーチ
   $(function() {
     $("#user-search-field").on("keyup", function() {
       var input = $("#user-search-field").val();
@@ -60,42 +82,21 @@ $(function() {
         data: { member: input },
         dataType: 'json'
       })
-
       .done(function(users) {
         $("#user_search_result").empty();
-          if (users.length !== 0 && users !== null) {
-            users.forEach(function(user){
-              appendUsers(user);
-            })
-          } else {
-            appendMatch();
-          }
+        if (users.length !== 0 && users !== null) {
+          users.forEach(function(user){
+            appendUsers(user);
+          })
+        } else {
+          appendMatch();
+        }
       })
       .fail(function() {
         alert('ユーザー検索に失敗しました');
       });
     });
   });
-
-  // 選択しているグループのユーザーの名前を配列にぶち込んでいきたい
-  $(function() {
-    // ページを読み込んだ時に処理が行われるようにしたい
-    $("#user-search-field").on("keyup", function() {
-      var array = []
-      var user_data = $(".chat-group-user.clearfix").text()
-
-      // var user_data = document.querySelectorAll('.chat-group-user.clearfix');
-      // user_data = [...user_data];
-
-      // console.log(user_data);
-      array.push(user_data);
-      // console.log(array);
-      array.forEach(function(user_name){
-        member_name_lists.push(user_name)
-        // console.log(member_name_lists);
-      })
-    })
-  })
 
   //追加・削除ボタンの処理
   $(function() {
@@ -114,8 +115,7 @@ $(function() {
           member_name_lists.splice(i--,1);
         }
       }
-      console.log(member_name_lists);
-      $(this).parent().remove();
+      $(this).remove();
     });
   });
 });
