@@ -68,14 +68,21 @@ $(function(){
       messages.forEach(function(message) {
         if (message.id > last_message_id ) {
           insertHTML += messagebuildHTML(message);
+          $('.main-bottom').animate({scrollTop: $('.main-bottom')[0].scrollHeight}, 'fast');
         }
       });
       $('.messages').append(insertHTML);
-      $('.main-bottom').animate({scrollTop: $('.main-bottom')[0].scrollHeight}, 'fast');
     })
-    // .fail(function() {
-    //   alert('自動更新に失敗しました');
-    // });
+    .fail(function() {
+      alert('自動更新に失敗しました');
+    });
   };
-  setInterval(reloadMessages, 5000);
+
+  // トップページでのみ自動更新が行われるようにするための記述(暫定的にiは100までにしてる)
+  for (var i = 0; i < 100; i++){
+    var url = location.href
+    if (url === `http://localhost:3000/groups/${i}/messages`){
+      setInterval(reloadMessages, 5000);
+    }
+  }
 }); 
