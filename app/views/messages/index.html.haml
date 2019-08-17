@@ -12,7 +12,7 @@
     .main
       .main-top
         .main-top-name
-          %h2
+          %h2.main-top-name__data{data: {id: @group.id}}
             = @group.name
           %p
             - @group.users.each do |user|
@@ -25,7 +25,7 @@
           = render partial: 'message', collection: @messages
 
     %footer.footer
-      = form_for [@group, @message], id: "new_message" do |f|
+      = form_for [@group, @message], html:{id: "new_message"} do |f|
         = f.text_field :content, class: 'input-textarea', placeholder: 'type a message'
         = f.label :image, class: 'image-icon', for: "sample1" do
           %i.far.fa-image.fa-lg

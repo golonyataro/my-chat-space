@@ -1,6 +1,5 @@
 .chat-group-form
   %h1 チャットグループ編集
-  -# = render partial: 'form', locals: { group: @group }
   = form_for @group do |f|
     - if @group.errors.any?
       .chat-group-form__errors
@@ -20,7 +19,7 @@
         .chat-group-form__search.clearfix
           %input#user-search-field.chat-group-form__input{ placeholder: '追加したいユーザー名を入力してください'}
         #user_search_result
-      
+
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
         %label.chat-group-form__label チャットメンバー
@@ -32,9 +31,9 @@
           - @group.users.each do |user|
             - if user.id != current_user.id
               .chat_group_user_current.chat-group-user.clearfix
+                = f.hidden_field :user_ids, value: user.id, multiple: true
                 = user.name 
                 %a.user_search_remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn削除
-                = f.hidden_field :user_ids, value: current_user.id, multiple: true
           #member_search_result
 
     .chat-group-form__field.clearfix
