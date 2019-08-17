@@ -4,7 +4,6 @@ $(function() {
   var member_name_lists = [];
 
   function appendUsers(user) {
-    
     var html = '';
     html = `<div class="chat-group-user clearfix">
               <p class="chat-group-user__name">
@@ -27,7 +26,7 @@ $(function() {
 
   function appendMembers(user_name, user_id) {
     var html = `<div class='chat-group-user clearfix'>
-                  <input name='group[user_ids][]' type='hidden' value="${user_id}" multiple >
+                  <input name='group[user_ids][]' type='hidden' value="${user_id}">
                     <p class='chat-group-user__name'>
                       ${user_name}
                     </p>
@@ -40,7 +39,6 @@ $(function() {
   };
 
   function appendMatch() {
-    
     var html = '';
     html = `<div class="chat-group-user clearfix">
               <p class="chat-group-user__name">
@@ -62,13 +60,11 @@ $(function() {
         processData: false,
         contentType: false
       })
-
       .done(function(users) {
         users.forEach(function(user){
           member_name_lists.push(user.name)
         })
       })
-      console.log(member_name_lists)
     })
   })
 
@@ -105,7 +101,6 @@ $(function() {
       var user_id = $(this).attr("data-user-id");
       $(this).parent().remove();
       member_name_lists.push(user_name)
-      // console.log(member_name_lists);
       appendMembers(user_name, user_id);
     });
     $(document).on("click", '.user_search_remove', function() {
@@ -115,7 +110,7 @@ $(function() {
           member_name_lists.splice(i--,1);
         }
       }
-      $(this).remove();
+      $(this).parent().remove();
     });
   });
 });
