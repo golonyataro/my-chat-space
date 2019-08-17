@@ -57,6 +57,7 @@ $(function(){
   //自動更新
   var reloadMessages = function() {
     var last_message_id = $('.message:last').data('id');
+    console.log(last_message_id)
     $.ajax({
       url: location.href.json,
       type: 'get',
@@ -78,11 +79,10 @@ $(function(){
     });
   };
 
-  // トップページでのみ自動更新が行われるようにするための記述(暫定的にiは100までにしてる)
-  for (var i = 0; i < 100; i++){
-    var url = location.href
-    if (url === `http://localhost:3000/groups/${i}/messages`){
-      setInterval(reloadMessages, 5000);
-    }
+  // トップページでのみ自動更新が行われるようにする
+  var groupId = $('.main-top-name__data').data('id')
+  var path = window.location.pathname
+  if (path === `/groups/${groupId}/messages`){
+    setInterval(reloadMessages, 5000);
   }
 }); 
