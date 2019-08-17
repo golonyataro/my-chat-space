@@ -92,12 +92,12 @@ html, body {
       float: right;
       margin: 28px 0;
       color: $lightBlue;
-      border: 1px solid $lightBlue;
-      padding: 10px 20px;
 
       &_inside {
         text-decoration: none;
         color: $lightBlue;
+        padding: 10px 20px;
+        border: 1px solid $lightBlue;
       }
   }
 
